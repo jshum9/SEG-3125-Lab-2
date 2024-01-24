@@ -4,22 +4,100 @@
 
 var products = [
 	{
-		name: "brocoli",
+		name: "brocoli, $1.99",
 		vegetarian: true,
 		glutenFree: true,
+		organic: true,
+		nonOrganic: false,
 		price: 1.99
 	},
 	{
-		name: "bread",
+		name: "bread, $2.35",
 		vegetarian: true,
 		glutenFree: false,
+		organic: false,
+		nonOrganic: true,
 		price: 2.35
 	},
 	{
-		name: "salmon",
+		name: "salmon, $10.00",
 		vegetarian: false,
 		glutenFree: true,
+		organic: true,
+		nonOrganic: false,
 		price: 10.00
+	},
+	{
+		name: "lentils, $3.15",
+		vegetarian: true,
+		guttenFree: false,
+		organic: true,
+		nonOrganic: false,
+		price: 3.15
+	},
+	{
+		name: "chickpeas, $4.15",
+		vegetarian: true,
+		gluttenFree: false,
+		organic: true,
+		nonOrganic: false,
+		price: 4.15
+	},
+	{
+		name: "spinach, $5.15",
+		vegetarian: true,
+		gluttenFree: false,
+		organic: true,
+		nonOrganic: false,
+		price: 5.15
+	},
+	{
+		name: "quinoa, $5.15",
+		vegetarian: true, 
+		gluttenFree: true,
+		organic: false,
+		nonOrganic: true,
+		price: 5.15
+	},
+	{
+		name: "almond milk, $4.15", 
+		vegetarian: true,
+		gluttenFree: true,
+		organic: false,
+		nonOrganic: true,
+		price: 4.15
+	},
+	{
+		name: "oats, $3.15",
+		vegetarian: true,
+		glutenFree: false,
+		organic: false,
+		nonOrganic: true,
+		price: 3.15
+	},
+	{
+		name: "brown rice, $2.15",
+		vegetarian: true,
+		gluttenFree: true,
+		organic: true,
+		nonOrganic: false,
+		price: 2.15
+	}, 
+	{
+		name: "assorted berries, $2.15", 
+		vegetarian: true,
+		glutenFree: true,
+		organic: true,
+		nonOrganic: false,
+		price: 2.15
+	}, 
+	{
+		name: "pasta, $1.15",
+		vegetarian: true,
+		glutenFree: false,
+		organic: false,
+		nonOrganic: true,
+		price: 1.15
 	}
 ];
 	
@@ -30,6 +108,7 @@ var products = [
 
 function restrictListProducts(prods, restriction) {
 	let product_names = [];
+	// Checks for vegetarian and/or glutten free
 	for (let i=0; i<prods.length; i+=1) {
 		if ((restriction == "Vegetarian") && (prods[i].vegetarian == true)){
 			product_names.push(prods[i].name);
@@ -37,9 +116,24 @@ function restrictListProducts(prods, restriction) {
 		else if ((restriction == "GlutenFree") && (prods[i].glutenFree == true)){
 			product_names.push(prods[i].name);
 		}
+		else if ((restriction == "Both") && (prods[i].vegetarin == true) && (prods[i].glutenFree == true)){
+			product_names.push(prods[i].name);
+		}
 		else if (restriction == "None"){
 			product_names.push(prods[i].name);
 		}
+	// Checks for organic or non-organic or none
+	for (let i=0; i<prods.length; i+=1){
+		if (restriction == "Organic"){
+			product_names.push(prods[i].name);
+		}
+		else if (restriction == "Non-Organic"){
+			product_names.push(prods[i].name);
+		}
+		else if (restriction == "No Preference"){
+			products_name.push(prods[i].name);
+		}
+	}
 	}
 	return product_names;
 }
