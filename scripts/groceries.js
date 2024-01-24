@@ -122,7 +122,9 @@ function restrictListProducts(prods, restriction) {
 		else if (restriction == "None"){
 			product_names.push(prods[i].name);
 		}
+	}
 	// Checks for organic or non-organic or none
+	/** 
 	for (let i=0; i<prods.length; i+=1){
 		if (restriction == "Organic"){
 			product_names.push(prods[i].name);
@@ -133,10 +135,11 @@ function restrictListProducts(prods, restriction) {
 		else if (restriction == "No Preference"){
 			products_name.push(prods[i].name);
 		}
-	}
-	}
+	} */
 	return product_names;
 }
+
+//function restrictListProductsPreference(prods, restriction) {}
 
 // Calculate the total price of items, with received parameter being a list of products
 function getTotalPrice(chosenProducts) {
