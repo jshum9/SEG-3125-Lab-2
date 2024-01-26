@@ -103,9 +103,8 @@ var products = [
 
 // given restrictions provided, make a reduced list of products
 // prices should be included in this list, as well as a sort based on price
-
+let product_names = [];
 function restrictListProducts(prods, restriction) {
-	let product_names = [];
 	// Checks for vegetarian and/or glutten free
 	for (let i=0; i<prods.length; i+=1) {
 		if ((restriction == "Vegetarian") && (prods[i].vegetarian == true)){
