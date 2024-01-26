@@ -4,7 +4,7 @@
 
 var products = [
 	{
-		name: "brocoli, $1.99",
+		name: "brocoli, $3.99",
 		vegetarian: true,
 		glutenFree: true,
 		organic: true,
@@ -60,7 +60,7 @@ var products = [
 		price: 5.15
 	},
 	{
-		name: "almond milk, $4.15", 
+		name: "almond milk, $1.15", 
 		vegetarian: true,
 		gluttenFree: true,
 		organic: false,
@@ -103,8 +103,10 @@ var products = [
 
 // given restrictions provided, make a reduced list of products
 // prices should be included in this list, as well as a sort based on price
-let product_names = [];
+
 function restrictListProducts(prods, restriction) {
+	let product_names = [];
+
 	// Checks for vegetarian and/or glutten free
 	for (let i=0; i<prods.length; i+=1) {
 		if ((restriction == "Vegetarian") && (prods[i].vegetarian == true)){
@@ -119,31 +121,37 @@ function restrictListProducts(prods, restriction) {
 		else if (restriction == "None"){
 			product_names.push(prods[i].name);
 		}
-	}
-
-	// Checks for organic or non-organic or none
-	for (let i=0; i<prods.length; i+=1){
-		if (restriction == "Organic"){
-			product_names.push(prods[i].name);
-		}
 		else if (restriction == "Non-Organic"){
 			product_names.push(prods[i].name);
 		}
 		else if (restriction == "No Preference"){
 			products_name.push(prods[i].name);
 		}
+		else if (restriction == "Organic"){
+			product_names.push(prods[i].name);
+		}
 	}
 
 	//Need to sort product_names by price
-	
-	for (let i=1; i<product_names.length; i+=1) {
-		var current = product_names[i].price;
-		//var j = i - 1;
-		while (j >=i-1 && product_names[j].price > current) {
-			product_names[j + 1] = product_names[j];
-			j--;
+	var temp;
+    var swapped;
+    for (let i = 0; i < product_names.length - 1; i++) 
+    {
+        swapped = false;
+        for (let j = 0; j < product_names.length - i; j++) 
+        {
+            if (product_names[j] > product_names[j + 1]) 
+            {
+                temp = product_names[j];
+                product_names[j] = product_names[j + 1];
+                product_names[j + 1] = temp;
+                swapped = true;
+            }
 		}
-	}
+        if (swapped == false)
+        break;
+    }
+
 	return product_names;
 }
 
@@ -152,10 +160,8 @@ function restrictListProducts(prods, restriction) {
 // Calculate the total price of items, with received parameter being a list of products
 function getTotalPrice(chosenProducts) {
 	totalPrice = 0;
-	for (let i=0; i<product_names.length; i+=1) {
-		if (chosenProducts.indexOf(products[i].name) > -1){
-			totalPrice += products[i].price;
-		}
+	for (let i=0; i<chosenProducts.length; i+=1) {
+			totalPrice += chosenProducts.indexOf(products[i].name).price;
 	}
 	return totalPrice;
 }
