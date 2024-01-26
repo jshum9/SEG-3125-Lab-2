@@ -123,7 +123,6 @@ function restrictListProducts(prods, restriction) {
 	}
 
 	// Checks for organic or non-organic or none
-	/** 
 	for (let i=0; i<prods.length; i+=1){
 		if (restriction == "Organic"){
 			product_names.push(prods[i].name);
@@ -134,10 +133,10 @@ function restrictListProducts(prods, restriction) {
 		else if (restriction == "No Preference"){
 			products_name.push(prods[i].name);
 		}
-	} */
+	}
 
 	//Need to sort product_names by price
-	/** 
+	
 	for (let i=1; i<product_names.length; i+=1) {
 		var current = product_names[i].price;
 		//var j = i - 1;
@@ -146,7 +145,6 @@ function restrictListProducts(prods, restriction) {
 			j--;
 		}
 	}
-	*/
 	return product_names;
 }
 
